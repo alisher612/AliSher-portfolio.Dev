@@ -971,3 +971,12 @@ body {
   }
 
 }
+
+
+@media (max-width: 768px) {
+  .btn-primary {
+    display: block;
+    margin: 20px auto 0 auto;
+    text-align: center;
+  }
+}
