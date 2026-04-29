@@ -210,15 +210,9 @@ app.use(methodOverride("_method"));
 // -------------------- SESSION --------------------
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: "supersecretkey",
     resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: true,        // REQUIRED for Render HTTPS
-      sameSite: "none",    // REQUIRED for cross-device/session consistency
-      httpOnly: true,
-      maxAge: 24 * 60 * 60 * 1000 // optional (1 day)
-    }
+    saveUninitialized: true,
   })
 );
 
