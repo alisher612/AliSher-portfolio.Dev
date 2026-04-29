@@ -878,3 +878,96 @@ body {
     font-size: 14px;
   }
 }
+
+
+
+@media (max-width: 768px) {
+
+  /* GLOBAL CENTER ALIGN */
+  body {
+    text-align: center;
+  }
+
+  /* MAIN WRAPPER */
+  .admin-main {
+    padding: 15px;
+    text-align: center;
+  }
+
+  /* HEADINGS */
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center !important;
+  }
+
+  .admin-title,
+  .admin-subtitle {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* PARAGRAPHS */
+  p {
+    text-align: center;
+  }
+
+  /* FLEX HEADERS */
+  .admin-header-flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* BUTTONS */
+  button,
+  .btn,
+  .btn-primary,
+  .btn-outline,
+  .add-project-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* FORM ELEMENTS */
+  .form-group {
+    text-align: center;
+  }
+
+  .form-group label {
+    text-align: center;
+    display: block;
+  }
+
+  input,
+  textarea,
+  select {
+    text-align: center;
+  }
+
+  /* CARDS */
+  .stat-card {
+    text-align: center;
+  }
+
+  .stat-card h3,
+  .stat-card p {
+    text-align: center;
+  }
+
+  /* TABLE CONTENT */
+  .table-container {
+    text-align: center;
+  }
+
+  .admin-table td,
+  .admin-table th {
+    text-align: center;
+  }
+
+  /* SIDEBAR NAV */
+  .admin-sidebar nav a {
+    text-align: center;
+    justify-content: center;
+  }
+
+}
