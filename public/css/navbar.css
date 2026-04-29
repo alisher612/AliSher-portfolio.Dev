@@ -1,0 +1,177 @@
+/* ============================================
+   navbar.css — Bottom Nav + Theme Toggle
+   ============================================ */
+
+/* ─── Top-right Theme Button ─── */
+.theme-btn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 999;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.theme-btn:hover {
+  color: var(--accent-cyan);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: rotate(12deg);
+}
+
+.theme-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.3s ease;
+}
+
+/* ─── Bottom Floating Nav ─── */
+.bottom-nav {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: rgba(13, 20, 36, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.14);
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* ─── Nav Items ─── */
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.nav-item svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.8;
+  stroke: currentColor;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s ease;
+}
+
+.nav-item:hover {
+  color: var(--text-primary);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.nav-item:hover svg { transform: scale(1.15); }
+
+.nav-item.active {
+  color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 6px var(--accent-cyan);
+  animation: pulse 2s infinite;
+}
+
+/* ─── Tooltip ─── */
+.nav-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover .nav-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ─── Light Mode Overrides ─── */
+body.light {
+  --bg-primary:    #f0f6ff;
+  --bg-secondary:  #e8f0fa;
+  --bg-card:       #ffffff;
+  --bg-card-hover: #f5f8ff;
+  --text-primary:  #0a0f1e;
+  --text-secondary:#334155;
+  --text-muted:    #64748b;
+  --border:        rgba(56, 130, 248, 0.18);
+  --border-hover:  rgba(56, 130, 248, 0.4);
+}
+
+body.light .bottom-nav {
+  background: rgba(240, 246, 255, 0.88);
+  border-color: rgba(56, 130, 248, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+body.light body::before {
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 10%, rgba(56,189,248,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(168,85,247,0.05) 0%, transparent 60%);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 480px) {
+  .bottom-nav {
+    bottom: 14px;
+    padding: 0.45rem 0.65rem;
+  }
+
+  .nav-item { width: 40px; height: 40px; }
+  .nav-item svg { width: 16px; height: 16px; }
+
+  .theme-btn { top: 14px; right: 14px; width: 40px; height: 40px; }
+}
+
+
+
+

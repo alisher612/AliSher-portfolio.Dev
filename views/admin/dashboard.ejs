@@ -1,0 +1,49 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="admin-wrapper">
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar">
+    <h2 class="logo">AliSher Admin</h2>
+
+    <nav>
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/projects">Projects</a>
+      <a href="/admin/delivered">Delivered Projects</a>
+      <a href="/admin/messages">Messages</a>
+      <a href="/admin/logout" class="logout">Logout</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="admin-main">
+
+    <h1 class="admin-title">Dashboard Overview</h1>
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <h3>Projects</h3>
+        <p><%= typeof projectsCount !== "undefined" ? projectsCount : 0 %></p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Messages</h3>
+        <p><%= typeof messagesCount !== "undefined" ? messagesCount : 0 %></p>
+      </div>
+
+      <div class="stat-card">
+  <h3>Delivered Projects</h3>
+  <p><%= typeof deliveredCount !== "undefined" ? deliveredCount : 0 %></p>
+</div>
+
+    </div>
+
+    <div class="admin-info">
+      <h2>Welcome Back 👋</h2>
+      <p>Manage your portfolio projects, messages, and content from here.</p>
+    </div>
+
+  </main>
+
+</div>

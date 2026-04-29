@@ -1,0 +1,82 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="admin-wrapper">
+
+  <aside class="admin-sidebar">
+    <h2 class="logo">AliSher Admin</h2>
+    <nav>
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/projects">Projects</a>
+      <a href="/admin/delivered" class="active">Delivered Projects</a>
+      <a href="/admin/messages">Messages</a>
+      <a href="/admin/logout">Logout</a>
+    </nav>
+  </aside>
+
+  <main class="admin-main">
+
+    <div class="admin-header-flex">
+      <div>
+        <h1 class="admin-title">Add Delivered Project</h1>
+        <p class="admin-subtitle">Add client project details.</p>
+      </div>
+
+      <a href="/admin/delivered" class="btn btn-outline">Back</a>
+    </div>
+
+    <div class="form-container">
+
+      <form action="/admin/delivered"
+            method="POST"
+            enctype="multipart/form-data"
+            class="admin-form">
+
+        <div class="form-grid">
+
+          <div class="form-column">
+
+            <div class="form-group">
+              <label>Project Title</label>
+              <input type="text" name="title" required>
+            </div>
+
+            <!-- <div class="form-group">
+              <label>Client Name</label>
+              <input type="text" name="clientName" required>
+            </div> -->
+
+            <div class="form-group">
+              <label>Live Link</label>
+              <input type="text" name="liveLink">
+            </div>
+
+          </div>
+
+          <div class="form-column">
+
+            <div class="form-group">
+              <label>Image</label>
+              <input type="file" name="image" required>
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <textarea name="description" rows="6" required></textarea>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            Publish Delivered Project
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </main>
+</div>

@@ -1,0 +1,122 @@
+<% layout("layouts/boilerplate") %>
+
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <h2 class="logo">AliSher Admin</h2>
+      <nav>
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/admin/projects" class="active">Projects</a>
+        <a href="/admin/delivered">Delivered Projects</a>
+        <a href="/admin/messages">Messages</a>
+        <a href="/admin/logout" class="logout">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header-flex">
+        <div>
+          <h1 class="admin-title">Add New Project</h1>
+          <p class="admin-subtitle">Fill in the details to showcase a new piece of work.</p>
+        </div>
+        <a href="/admin/projects" class="btn btn-outline">Back to List</a>
+      </div>
+
+      <div class="form-container">
+        <form action="/admin/projects" method="POST" enctype="multipart/form-data" class="admin-form">
+
+          <div class="form-grid">
+            <div class="form-column">
+              <div class="form-group">
+                <label>Project Title</label>
+                <input type="text" name="project[title]" placeholder="e.g. ElectroGenix Store" required>
+              </div>
+
+              <div class="form-group">
+                <label>Category</label>
+                <div class="category-chips">
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="Web Application" required checked>
+                    <span>Web Application</span>
+                  </label>
+
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="Ecommerce">
+                    <span>Frontend Project</span>
+                  </label>
+
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="Ecommerce">
+                    <span>Backend Project</span>
+                  </label>
+
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="AI / ML">
+                    <span>AI</span>
+                  </label>
+
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="AI / ML">
+                    <span>AI / ML</span>
+                  </label>
+
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="Portfolio">
+                    <span>Responsive Web Application</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Role</label>
+                <input type="text" name="project[role]" placeholder="e.g. Full Stack Developer">
+              </div>
+
+              <div class="form-group">
+                <label>Duration</label>
+                <input type="text" name="project[duration]" placeholder="e.g. 3 Weeks / 1 Month">
+              </div>
+
+              <div class="form-group">
+                <label>Focus</label>
+                <input type="text" name="project[focus]" placeholder="e.g. E-commerce / SaaS / Portfolio">
+              </div>
+
+              <div class="form-group">
+                <label>Technologies (Comma separated)</label>
+                <input type="text" name="project[technologies]" placeholder="Node.js, React, MongoDB, Tailwind">
+              </div>
+
+            </div>
+
+            <div class="form-column">
+              <div class="form-group">
+                <label>Project Image</label>
+                <div class="image-upload-wrapper">
+                  <input type="file" name="image" id="imageInput" accept="image/*" required>
+                  <div class="upload-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                      <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                    <p>Click to upload project thumbnail</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Description</label>
+                <textarea name="project[description]" rows="5"
+                  placeholder="Describe the project features and your role..." required></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Publish Project</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>

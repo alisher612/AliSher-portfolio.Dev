@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Portfolio — Full Stack Developer"/>
+  <title><%= typeof title !== 'undefined' ? title + ' | Ali Sher - Full Stack Developer' : 'Ali Sher - Full Stack Developer' %></title>
+  <link rel="icon" type="image/png" href="/images/favicon1.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+
+  <!-- Global styles (reset, variables, utilities) -->
+  <link rel="stylesheet" href="/css/style.css"/>
+
+  <!-- Bottom nav styles -->
+  <link rel="stylesheet" href="/css/navbar.css"/>
+  <link rel="stylesheet" href="/css/home.css"/>
+  <link rel="stylesheet" href="/css/footer.css"/>
+  <link rel="stylesheet" href="/css/show.css"/>
+  <link rel="stylesheet" href="/css/login.css"/>
+  <link rel="stylesheet" href="/css/dashboard.css"/>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Page-specific styles injected per route -->
+  <!-- e.g. home, projects, contact, etc. -->
+  <% if (typeof pageCss !== 'undefined') { %>
+    <link rel="stylesheet" href="/css/<%= pageCss %>.css"/>
+  <% } %>
+</head>
+<body>
+
+  <!-- Flash Messages -->
+<% if (success) { %>
+  <div class="flash flash-success" id="flashBox">
+    <div class="flash-content">
+      <span class="flash-icon">✓</span>
+      <span class="flash-text"><%= success %></span>
+    </div>
+    <button class="flash-close" onclick="closeFlash()">✕</button>
+  </div>
+<% } %>
+
+<% if (error) { %>
+  <div class="flash flash-error" id="flashBox">
+    <div class="flash-content">
+      <span class="flash-icon">!</span>
+      <span class="flash-text"><%= error %></span>
+    </div>
+    <button class="flash-close" onclick="closeFlash()">✕</button>
+  </div>
+<% } %>
+
+  <!-- Main Content -->
+  <main>
+    <%- body %>
+  </main>
+
+  <!-- Bottom Floating Navigation -->
+  <%- include('../partials/navbar') %>
+  <%- include('../partials/footer') %>
+
+  <script>
+  function closeFlash() {
+    const el = document.getElementById("flashBox");
+    if (el) el.remove();
+  }
+
+  setTimeout(() => {
+    closeFlash();
+  }, 4000);
+</script>
+
+</body>
+</html>

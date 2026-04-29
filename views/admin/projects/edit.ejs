@@ -1,0 +1,123 @@
+<% layout("layouts/boilerplate") %>
+
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <h2 class="logo">AliSher Admin</h2>
+      <nav>
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/admin/projects" class="active">Projects</a>
+        <a href="/admin/delivered">Delivered Projects</a>
+        <a href="/admin/messages">Messages</a>
+        <a href="/admin/logout" class="logout">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header-flex">
+        <div>
+          <h1 class="admin-title">Edit Project</h1>
+          <p class="admin-subtitle">Editing: <span class="hl">
+              <%= project.title %>
+            </span></p>
+        </div>
+        <a href="/admin/projects" class="btn btn-outline">Cancel</a>
+      </div>
+
+      <div class="form-container">
+        <form action="/admin/projects/<%= project._id %>?_method=PUT" method="POST" enctype="multipart/form-data"
+          class="admin-form">
+
+          <div class="form-grid">
+            <div class="form-column">
+              <div class="form-group">
+                <label>Project Title</label>
+                <input type="text" name="project[title]" value="<%= project.title %>" required>
+              </div>
+
+              <div class="form-group">
+                <label>Category</label>
+                <div class="category-chips">
+
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="Web Application"
+                      <%=project.category==='Web Application' ? 'checked' : '' %> required>
+                    <span>Web Application</span>
+                  </label>
+
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="Frontend" <%=project.category==='Frontend'
+                      ? 'checked' : '' %>>
+                    <span>Frontend Project</span>
+                  </label>
+
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="Backend" <%=project.category==='Backend'
+                      ? 'checked' : '' %>>
+                    <span>Backend Project</span>
+                  </label>
+
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="AI" <%=project.category==='AI' ? 'checked' : ''
+                      %>>
+                    <span>AI</span>
+                  </label>
+
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="AI / ML" <%=project.category==='AI / ML'
+                      ? 'checked' : '' %>>
+                    <span>AI / ML</span>
+                  </label>
+
+                  <label class="chip">
+                    <input type="radio" name="project[category]" value="Responsive Web App"
+                      <%=project.category==='Responsive Web App' ? 'checked' : '' %>>
+                    <span>Responsive Web Application</span>
+                  </label>
+
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Role</label>
+                <input type="text" name="project[role]" value="<%= project.role %>">
+              </div>
+
+              <div class="form-group">
+                <label>Duration</label>
+                <input type="text" name="project[duration]" value="<%= project.duration %>">
+              </div>
+
+              <div class="form-group">
+                <label>Focus</label>
+                <input type="text" name="project[focus]" value="<%= project.focus %>">
+              </div>
+
+              <div class="form-group">
+                <label>Technologies</label>
+                <input type="text" name="project[technologies]" value="<%= project.technologies.join(', ') %>">
+              </div>
+            </div>
+
+            <div class="form-column">
+              <div class="form-group">
+                <label>Update Image (Leave blank to keep current)</label>
+                <div class="image-preview-box">
+                 <img src="<%= project.image.url %>" alt="Current image" class="current-img-preview">
+                  <input type="file" name="image" id="imageInput">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Description</label>
+                <textarea name="project[description]" rows="5" required><%= project.description %></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Update Project</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>

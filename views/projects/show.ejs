@@ -1,0 +1,154 @@
+<% layout("layouts/boilerplate") %>
+
+  <section class="project-detail container">
+    <!-- Back Button -->
+    <div class="back-nav">
+      <a href="/" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Home
+      </a>
+    </div>
+
+    <!-- Project Header -->
+    <div class="project-header">
+      <span class="badge-pill-large">
+        <span class="dot"></span>
+        <%= project.category %>
+      </span>
+      <h1 class="project-title-main">
+        <%= project.title %>
+      </h1>
+      <div class="project-tags-header">
+        <% project.technologies.forEach(tag=> { %>
+          <span class="tech-tag">#<%= tag %></span>
+          <% }) %>
+      </div>
+    </div>
+
+    <!-- Project Image -->
+    <div class="project-image-wrapper">
+      <img src="<%= project.image.url %>" alt="<%= project.title %>" class="project-hero-image">
+    </div>
+
+    <!-- Project Info Grid -->
+    <div class="project-info-grid">
+      <div class="project-description">
+        <h2>Project Overview</h2>
+        <div class="project-desc-content">
+          <%- project.description %>
+        </div>
+
+        <% if (project.highlights && project.highlights.length) { %>
+          <div class="project-highlights">
+            <h3>Key Highlights</h3>
+            <ul>
+              <% project.highlights.forEach(highlight=> { %>
+                <li>
+                  <%= highlight %>
+                </li>
+                <% }) %>
+            </ul>
+          </div>
+          <% } %>
+      </div>
+
+      <div class="project-meta">
+        <div class="meta-card">
+          <h3>Project Info</h3>
+          <div class="meta-item">
+            <span class="meta-label">Role:</span>
+            <span class="meta-value">
+              <%= project.role || 'Full Stack Developer' %>
+            </span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Duration:</span>
+            <span class="meta-value">
+              <%= project.duration || 'Ongoing' %>
+            </span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Focus:</span>
+            <span class="meta-value">
+              <%= project.focus || 'Web Development' %>
+            </span>
+          </div>
+        </div>
+
+        <div class="meta-card">
+          <h3>Technologies</h3>
+          <div class="tech-stack-list">
+            <% project.technologies.forEach(tech=> { %>
+              <span class="tech-stack-item">
+                <%= tech %>
+              </span>
+              <% }) %>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- More Projects Section -->
+    <div class="more-projects">
+      <div class="section-header">
+        <span class="badge-pill-large">
+          <span class="dot"></span>
+          Explore More
+        </span>
+        <h2 class="section-title">More <span class="hl">Projects</span></h2>
+      </div>
+
+      <div class="projects-grid">
+        <% if (moreProjects && moreProjects.length) { %>
+          <% moreProjects.forEach(proj=> { %>
+            <div class="project-card" onclick="window.location.href='/projects/<%= proj._id %>'">
+              <div class="project-image">
+                <img src="<%= proj.image.url %>" alt="<%= proj.title %>">
+
+                <!-- ✅ CATEGORY ADDED (this was missing) -->
+                <span class="project-badge">
+                  <%= proj.category %>
+                </span>
+
+                <!-- optional overlay button (same behavior as home) -->
+                <button class="project-overlay"
+                  onclick="event.stopPropagation(); window.location.href='/projects/<%= proj._id %>'">
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+              <div class="more-project-content">
+                <h4>
+                  <%= proj.title %>
+                </h4>
+
+                <p>
+                  <% const plainText=proj.description.replace(/<[^>]*>/g, '');
+                    %>
+
+                    <%= plainText.length> 120
+                      ? plainText.substring(0, 120) + "..."
+                      : plainText %>
+                </p>
+
+                <div class="more-project-tags">
+                  <% proj.technologies.slice(0, 3).forEach(tag=> { %>
+                    <span>#<%= tag %></span>
+                    <% }) %>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+              <% } else { %>
+                <div class="more-project-placeholder">
+                  <p>Check back soon for more projects!</p>
+                </div>
+                <% } %>
+      </div>
+    </div>
+  </section>

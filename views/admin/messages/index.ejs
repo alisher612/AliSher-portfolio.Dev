@@ -1,0 +1,143 @@
+<% layout("layouts/boilerplate") %>
+
+  <div class="admin-wrapper">
+
+    <aside class="admin-sidebar">
+      <h2 class="logo">AliSher Admin</h2>
+
+      <nav>
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/admin/projects">Projects</a>
+        <a href="/admin/delivered">Delivered Projects</a>
+        <a href="/admin/messages" class="active">Messages</a>
+        <a href="/admin/logout" class="logout">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+
+      <div class="admin-header-flex">
+        <div>
+          <h1 class="admin-title">Client Messages</h1>
+          <p class="admin-subtitle">Manage and reply to client inquiries.</p>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="admin-table">
+
+          <thead>
+            <tr>
+              <th>Sender</th>
+              <th>Contact</th>
+              <th>Message</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Reply</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if (messages && messages.length> 0) { %>
+              <% messages.forEach(msg=> { %>
+
+                <tr>
+
+                  <!-- Sender -->
+                  <td>
+                    <div class="table-text">
+                      <span class="p-name">
+                        <%= msg.name %>
+                      </span>
+                    </div>
+                  </td>
+
+                  <!-- Contact -->
+                  <td>
+                    <div class="table-text">
+                      <span>
+                        <%= msg.email %>
+                      </span><br>
+                      <span>
+                        <%= msg.phone || "N/A" %>
+                      </span>
+                    </div>
+                  </td>
+
+                  <!-- Message -->
+                  <td>
+                    <p style="max-width:250px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                      <%= msg.message %>
+                    </p>
+                  </td>
+
+                  <!-- Status -->
+                  <td>
+                    <% if (msg.replied) { %>
+                      <span class="status-badge done">Replied</span>
+                      <% } else { %>
+                        <span class="status-badge pending">Pending</span>
+                        <% } %>
+                  </td>
+
+                  <!-- Date -->
+                  <td class="table-date">
+                    <%= new Date(msg.createdAt).toDateString() %>
+                  </td>
+
+                  <!-- Reply -->
+
+                  <td>
+                    <div class="action-btns">
+
+                      <!-- Reply -->
+                      <a href="/admin/messages/<%= msg._id %>/reply" class="action-icon edit" title="Reply">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor"
+                          stroke-width="2">
+                          <path d="M10 20l-6-6 6-6"></path>
+                          <path d="M4 14h10a4 4 0 0 0 0-8H11"></path>
+                        </svg>
+
+                      </a>
+
+                      <!-- DELETE -->
+                      <form action="/admin/messages/<%= msg._id %>?_method=DELETE" method="POST"
+                        style="display:inline;">
+
+                        <button class="action-icon delete" onclick="return confirm('Delete this message?')"
+                          type="submit">
+
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                            </path>
+                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                          </svg>
+
+                        </button>
+
+                      </form>
+
+                    </div>
+                  </td>
+
+                </tr>
+
+                <% }) %>
+                  <% } else { %>
+                    <tr>
+                      <td colspan="6" style="text-align:center; padding:30px;">
+                        No messages yet.
+                      </td>
+                    </tr>
+                    <% } %>
+          </tbody>
+
+        </table>
+      </div>
+
+    </main>
+  </div>

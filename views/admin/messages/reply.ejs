@@ -1,0 +1,50 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="admin-wrapper">
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar">
+    <h2 class="logo">AliSher Admin</h2>
+
+    <nav>
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/projects">Projects</a>
+      <a href="/admin/delivered">Delivered Projects</a>
+      <a href="/admin/messages" class="active">Messages</a>
+      <a href="/admin/logout" class="logout">Logout</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="admin-main">
+
+    <div class="admin-header-flex">
+      <div>
+        <h1 class="admin-title">Reply to Message</h1>
+        <p class="admin-subtitle">Send a response to the client inquiry.</p>
+      </div>
+    </div>
+
+    <div class="message-box">
+
+      <p><strong>Name:</strong> <%= message.name %></p>
+      <p><strong>Email:</strong> <%= message.email %></p>
+
+      <p><strong>Message:</strong></p>
+      <p class="msg-content"><%= message.message %></p>
+
+    </div>
+
+    <form method="POST" class="reply-form">
+
+      <label>Your Reply</label>
+      <textarea name="reply" rows="6" required></textarea>
+
+      <button type="submit" class="btn btn-primary">
+        Send Reply
+      </button>
+
+    </form>
+
+  </main>
+</div>
