@@ -3126,3 +3126,190 @@ hr {
   .live-grid { grid-template-columns: 1fr; }
   .live-body .btn { align-self: stretch; max-width: none; }
 }
+
+/* ============================================
+   LIVE & DELIVERED PROJECTS — MODERN RESPONSIVE
+============================================ */
+
+.delivered {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
+}
+
+/* ---------- GRID ---------- */
+.live-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 360px));
+  gap: clamp(1.1rem, 2.5vw, 1.8rem);
+  justify-content: center;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* ---------- CARD ---------- */
+.live-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.live-card:active {
+  transform: scale(0.985);
+}
+
+/* ---------- IMAGE ---------- */
+.live-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.live-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+
+/* soft dark gradient for depth */
+.live-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.6) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* ---------- TAG ---------- */
+.live-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 20px;
+  color: #38bdf8;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.live-tag.client {
+  color: #c084fc;
+  border-color: rgba(168, 85, 247, 0.45);
+}
+
+/* ---------- BODY ---------- */
+.live-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: clamp(1.1rem, 3vw, 1.4rem);
+  flex: 1;
+}
+
+.live-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.6vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.live-desc {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.live-client {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.live-client strong {
+  color: var(--accent-cyan);
+}
+
+/* ---------- BUTTON (uses your existing .btn .btn-primary) ---------- */
+.live-body .btn {
+  margin-top: auto;
+  align-self: flex-start;
+  min-height: 42px;
+  padding: 0.6rem 1.3rem;
+  font-size: 0.85rem;
+  border-radius: 12px;
+}
+
+.live-body .btn:active {
+  transform: scale(0.97);
+}
+
+/* ---------- HOVER (only on devices that really hover, not phones) ---------- */
+@media (hover: hover) {
+  .live-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .live-card:hover .live-media img {
+    transform: scale(1.06);
+  }
+}
+
+/* ---------- TABLET ---------- */
+@media (max-width: 900px) {
+  .live-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+  .live-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .live-card {
+    border-radius: 18px;
+  }
+
+  .live-media {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* full-width, thumb-friendly button (overrides global 320px mobile limit) */
+  .live-body .btn {
+    width: 100%;
+    max-width: none;
+    align-self: stretch;
+    min-height: 46px;
+    justify-content: center;
+  }
+}
+
+/* ---------- SMALL PHONES ---------- */
+@media (max-width: 380px) {
+  .live-body {
+    padding: 1rem;
+  }
+
+  .live-desc {
+    font-size: 0.84rem;
+  }
+
+  .live-tag {
+    font-size: 0.62rem;
+    padding: 4px 9px;
+  }
+}
