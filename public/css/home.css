@@ -2945,3 +2945,184 @@ hr {
   width: 100%;
   display: block;
 }
+
+/* ============================================
+   AI/ML SKILLS CARD
+============================================ */
+.skill-card.skill-wide { grid-column: 1 / -1; }
+
+.skill-list.two-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 2.5rem;
+}
+
+.ai-tags {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.skill-card.skill-wide .progress {
+  background: linear-gradient(90deg, #c084fc, #38bdf8);
+}
+
+@media (max-width: 768px) {
+  .skill-list.two-col { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   EXPERIENCE — EXTRAS
+============================================ */
+.exp-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.exp-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+}
+
+.exp-chip.current {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.exp-projects {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.exp-projects b {
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 0.2rem 0.65rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+}
+
+.tech-tag.ai {
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.1);
+  border-color: rgba(168, 85, 247, 0.25);
+}
+
+/* ============================================
+   LIVE & DELIVERED PROJECTS (compact cards)
+============================================ */
+.live-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.live-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.live-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.3);
+}
+
+.live-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.live-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+
+.live-card:hover .live-media img { transform: scale(1.05); }
+
+.live-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  color: #38bdf8;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.live-tag.client {
+  color: #c084fc;
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.live-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.2rem;
+  flex: 1;
+}
+
+.live-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.live-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.live-client {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.live-client strong { color: var(--accent-cyan); }
+
+.live-body .btn {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 0.55rem 1.1rem;
+  min-height: 38px;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 500px) {
+  .live-grid { grid-template-columns: 1fr; }
+  .live-body .btn { align-self: stretch; max-width: none; }
+}
